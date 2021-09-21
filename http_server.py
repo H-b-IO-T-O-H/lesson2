@@ -9,7 +9,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer, CGIHTTPRequestHandle
 PORT_NUMBER = 8080
 
 
-class Handler(BaseHTTPRequestHandler):
+class MyHandler(BaseHTTPRequestHandler):
     # Handler for the GET requests
     def do_GET(self):
         print('Get request received')
@@ -25,7 +25,8 @@ class Server:
     def __init__(self):
         # Create a web server and define the handler to manage the
         # incoming request
-        self.server = HTTPServer(('', PORT_NUMBER), CGIHTTPRequestHandler)
+        # self.server = HTTPServer(('', PORT_NUMBER), CGIHTTPRequestHandler)
+        self.server = HTTPServer(('', PORT_NUMBER), MyHandler)
 
     def run(self, port):
         try:
